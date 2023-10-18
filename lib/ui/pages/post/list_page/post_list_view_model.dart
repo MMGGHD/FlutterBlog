@@ -33,7 +33,8 @@ class PostListViewModel extends StateNotifier<PostListModel?> {
 // 3. 창고 관리자 << read나 watch가 발동할때 생성됨
 // read나 watch는 보통 View가 빌드되기 직전에 실행됨
 
+// autoDispose << View가 사라지면 창고와 관리자객체도 제거(가비지 컬렉션으로ㄱ)
 final postListProvider =
-    StateNotifierProvider<PostListViewModel, PostListModel?>((ref) {
+    StateNotifierProvider.autoDispose<PostListViewModel, PostListModel?>((ref) {
   return PostListViewModel(null, ref)..notifyInit();
 });

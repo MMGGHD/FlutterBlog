@@ -63,7 +63,19 @@ class SessionUser {
     }
   }
 
-  Future<void> logout() async {}
+  // 로그아웃 << 토큰방식은 서버에 상태가 없기 때문에 할수 있는 일이 없다.
+  // 토큰을 기기에서 없애 버리면 그게 로그아웃
+  Future<void> logout() async {
+    this.jwt = null;
+    this.isLogin = false;
+    this.user = null;
+
+    // secureStorage(내부 저장 토큰) 삭제 << IO가 발생하기 때문에 await걸어줌
+    await secureStorage.delete(key: "jwt");
+
+    // Navigator의 종류 공부해야함
+    Navigator.pushNamedAndRemoveUntil(mContext!, "/login", (route) => false);
+  }
 }
 
 // 3. 창고 관리자

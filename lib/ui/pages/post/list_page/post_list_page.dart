@@ -29,8 +29,8 @@ class PostListPage extends ConsumerWidget {
           // Logger().d() << debug의 약자
           Logger().d("리프레시 됨");
           // 창고에 "내용6"이라는 글이 들어오면 postListProvider가 watch로 감지
-          // read해서 notifyInit(초기값 갱신)하면 변경된 데이터를 뷰에 뿌려줌
-          // notifyInit(초기값)을 notifier해라 << 즉, 갱신(리빌드)해라
+          // read해서 notifyInit(초기값 갱신)하면 갱신 데이터를 뷰에 뿌려줌
+          // notifyInit을 read해라 << 즉, 갱신(리빌드)해라
           ref.read(postListProvider.notifier).notifyInit();
         },
         child: PostListBody(),
