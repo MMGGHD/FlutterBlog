@@ -32,7 +32,7 @@ class UserRepository {
       final jwt = response.headers["Authorization"];
 
       // final로 적힌 헤더의 원래 타입은 Map<String, List<String>?> 타입 (쿠키값 때문)
-      // List<String>?를 반환 받아서 first로 첫 값을 꺼내어 저장
+      // List<String>?를 반환 받아서 first로 첫 값을(어짜피 한개 밖에없음) 꺼내어 저장
       if (jwt != null) {
         responseDTO.token = jwt.first;
       }

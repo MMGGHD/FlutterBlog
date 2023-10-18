@@ -31,7 +31,7 @@ class PostListPage extends ConsumerWidget {
           // 창고에 "내용6"이라는 글이 들어오면 postListProvider가 watch로 감지
           // read해서 notifyInit(초기값 갱신)하면 갱신 데이터를 뷰에 뿌려줌
           // notifyInit을 read해라 << 즉, 갱신(리빌드)해라
-          ref.read(postListProvider.notifier).notifyInit();
+          ref.watch(postListProvider.notifier).notifyInit();
         },
         child: PostListBody(),
       ),
