@@ -12,7 +12,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PostListModel {
   List<Post> posts;
-
   PostListModel(this.posts);
 }
 
@@ -38,7 +37,7 @@ class PostListViewModel extends StateNotifier<PostListModel?> {
     SessionUser sessionUser = ref.read(sessionProvider);
 
     ResponseDTO responseDTO =
-        await PostRepository().fetchPost(sessionUser.jwt!, dto);
+        await PostRepository().savePost(sessionUser.jwt!, dto);
 
     if (responseDTO.code == 1) {
       // responseDTO는 dynamic타입, 실제로는 data가 Post타입 (묵시적 다운캐스팅이 가능)
